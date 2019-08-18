@@ -23,7 +23,7 @@ Note: Sample output for 4 111 was changed to 4 237
 
 
 mem = {}
-def hedwig(steps, x=0, y=0, left_x=-1, left_y=1):
+def hedwig(steps, x=0, y=0, left_x=-1, left_y=1,):
 
     key = steps, x, left_x, left_y
     if key in mem:
@@ -51,6 +51,9 @@ def hedwig(steps, x=0, y=0, left_x=-1, left_y=1):
         dirs += [[(1, 0), (left_x, left_y)]]
 
     for (dir_x, dir_y), (new_x_left, new_y_left) in dirs:
+        env = {'steps': steps-1, 'x': x+dir_x, 'y': y+dir_y,
+               'left_x': new_x_left, 'left_y': new_y_left}
+        print(env)
         total += hedwig(steps-1, x=x+dir_x, y=y+dir_y,
                         left_x=new_x_left, left_y=new_y_left)
 
@@ -61,4 +64,4 @@ def hedwig(steps, x=0, y=0, left_x=-1, left_y=1):
 # 9 ---> 110
 # 18 --> 8361
 # 111 -> 237
-print(hedwig(111) % 10007)
+print(hedwig(2) % 10007)

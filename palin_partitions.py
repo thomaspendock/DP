@@ -19,11 +19,10 @@ def num_palin_parts(s, mem={}):
     min_cuts = 10**10
     for i in range(1, len(s)+1):
         sub = s[:i]
-        print(sub)
         if sub[::-1] != sub:
             continue
 
-        num_cuts = palin_parts(s[i:])+1
+        num_cuts = num_palin_parts(s[i:])+1
         min_cuts = min(num_cuts, min_cuts)
         
 
@@ -53,6 +52,6 @@ def palin_parts(s, mem = {}):
     return palins
 
 
-ss = 'ababbbabbbbbbbbbbbbaaaaabbbbbbbbbbbbbbbbbabbbabababbbababababababaaaaaabbbababababbbaaabbbaaaabbababa'
-print(palin_parts(ss))
+ss = 'ababbbababbbababaaaaaabbbbaaaa'
+print(num_palin_parts(ss))
 
